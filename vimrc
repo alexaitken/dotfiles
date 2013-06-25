@@ -160,8 +160,8 @@ nmap <leader>vi :tabedit $MYVIMRC<cr>
 let g:snippetsEmu_key = "<S-Tab>"
 
 " Close all buffers
-nmap <leader>bdd :bufdo bd
-nmap <leader>bee :bufdo e!
+nmap <leader>bdd :bufdo bd <cr>
+nmap <leader>bee :bufdo e! <cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AutoCommands
