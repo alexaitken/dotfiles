@@ -1,7 +1,11 @@
 dotfiles
 ========
 
+My vim configure has been pulled from all over.  There is almost nothing that I didn't steal.
+Feel free to steal anything you find useful.
+
 Installation
+============
 
 git clone git://github.com/r00k/dotfiles ~/.dotfiles
 cd ~/.dotfiles
