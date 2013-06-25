@@ -1,0 +1,34 @@
+[user]
+	name = Alex Aitken
+	email = alex@alexaitken.com
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim --noplugin
+[alias]
+    stat     = status
+    co       = checkout
+    ws       = diff-index --color --check HEAD
+    dcommit  = svn dcommit
+    p-log    = log --patch --parents
+    f-log    = whatchanged --graph --parents
+    q-log    = log --no-merges --graph --pretty=format:'%Cred%h%Creset - %C(green)%aN%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'
+    m-log    = log --graph --pretty=format:'%Cred%h%Creset - %C(green)%aN%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'
+    c-log    = !sh -c 'git q-log --cherry-mark HEAD..$@' -
+    s-log    = stash list --pretty=format:'%Cred%gd - %h%Creset - %C(green)%aN%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'
+    svn-diff = diff remotes/git-svn
+    x        = !sh -c 'gitx'
+    grep-all = !sh -c 'git rev-list --all | xargs git grep \"${1}\"' -
+    whois    = !sh -c 'git log -i -1 --pretty=\"format::%an <%ae>\n\" --author=\"$1\"' -
+    up       = "!sh -c 'if [ -d .git/svn ]; then git svn rebase; else git pull --rebase $@; fi' -"
+    cp       = cherry-pick
+    commit   = commit --verbose
+    igrep    = grep --no-index
+    commit-amend = commit --amend -C HEAD
+    ca       = !sh -c 'git commit-amend $@' -
+    pullr    = pull --rebase
+[color]
+	ui = auto
+[branch]
+  autosetuprebase = always
+[push]
+	default = simple
