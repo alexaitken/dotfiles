@@ -26,7 +26,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'leebo/vim-slim'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/greplace.vim'
-Bundle 'vim-scripts/snippetsEmu'
+Bundle 'msanders/snipmate.vim'
 
 filetype plugin indent on     " required!
 
