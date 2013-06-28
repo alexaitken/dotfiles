@@ -112,6 +112,13 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 
+" bind control-l to hashrocket
+imap <C-l> <Space>=><Space>
+
+" convert string to symbol
+nmap <C-k> ds"ds'lbi:<esc>E
+imap <C-k> <esc>ds"ds'lbi:<esc>Ea
+
 " CommandT remaps
 map <Leader>f :CommandT<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
