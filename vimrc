@@ -26,7 +26,9 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'leebo/vim-slim'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/greplace.vim'
-Bundle 'msanders/snipmate.vim'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
 
 filetype plugin indent on     " required!
 
@@ -162,9 +164,6 @@ nmap <leader>an :vspl $HOME/Dropbox/notes/Alex_Aitken.notes <cr>
 nmap <leader>zn :vspl $HOME/Dropbox/notes/zoocasa.notes <cr>
 nmap <leader>nn :vspl $HOME/Dropbox/notes <cr>
 nmap <leader>vi :tabedit $MYVIMRC<cr>
-
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
 
 " Close all buffers
 nmap <leader>bdd :bufdo bd <cr>
