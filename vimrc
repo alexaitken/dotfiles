@@ -101,6 +101,7 @@ call MapCR()
 nnoremap <leader><leader> <c-^>
 
 command! Wq wq
+command! Tig !tig
 
 nmap <c-s> <esc>:w<CR>
 imap <c-s> <esc>:w<CR>
