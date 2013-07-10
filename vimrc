@@ -118,8 +118,8 @@ map <Leader>l :call RunLastSpec()<CR>
 imap <C-l> <Space>=><Space>
 
 " convert string to symbol
-nmap <C-k> ds"ds'lbi:<esc>E
-imap <C-k> <esc>ds"ds'lbi:<esc>Ea
+nmap <leader>k> ds"ds'lbi:<esc>E
+imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 
 " CommandT remaps
 map <Leader>f :CommandT<CR>
