@@ -103,6 +103,9 @@ nnoremap <leader><leader> <c-^>
 command! Wq wq
 command! Tig !tig
 
+map <f1> <esc>
+imap <f1> <esc>
+
 nmap <c-s> <esc>:w<CR>
 imap <c-s> <esc>:w<CR>
 
