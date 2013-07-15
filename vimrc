@@ -41,7 +41,7 @@ set wildmenu
 set showcmd
 set ruler
 set cursorline
-set number
+set relativenumber
 set laststatus=2
 syntax on
 
