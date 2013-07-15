@@ -125,6 +125,9 @@ imap <C-l> <Space>=><Space>
 nmap <leader>k ds"ds'lbi:<esc>E
 imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 
+" Git work in progress
+nmap <leader>gw :Git add .<CR>:Gcommit -m "WIP"<CR>
+
 " CommandT remaps
 map <Leader>f :CommandT<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
