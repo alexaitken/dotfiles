@@ -122,7 +122,7 @@ map <Leader>l :call RunLastSpec()<CR>
 imap <C-l> <Space>=><Space>
 
 " convert string to symbol
-nmap <leader>k> ds"ds'lbi:<esc>E
+nmap <leader>k ds"ds'lbi:<esc>E
 imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 
 " CommandT remaps
