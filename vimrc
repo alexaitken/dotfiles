@@ -169,7 +169,7 @@ nmap <leader>vn :50vspl $HOME/Dropbox/notes/vim.notes <cr>
 nmap <leader>an :vspl $HOME/Dropbox/notes/Alex_Aitken.notes <cr>
 nmap <leader>zn :vspl $HOME/Dropbox/notes/zoocasa.notes <cr>
 nmap <leader>nn :vspl $HOME/Dropbox/notes <cr>
-nmap <leader>vi :tabedit $MYVIMRC<cr>
+nmap <leader>vi :tabedit <C-R>=resolve(expand($MYVIMRC))<cr><cr>
 
 " Close all buffers
 nmap <leader>bdd :bufdo bd <cr>
