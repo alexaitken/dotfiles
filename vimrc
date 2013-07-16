@@ -189,3 +189,12 @@ if has("autocmd")
   " watch for file changes
   autocmd FileChangedShell * echo "File changed :e to reload"
 endif
+
+nmap <leader>4 :call ToggleNumberDisplay()<cr>
+function! ToggleNumberDisplay()
+  if exists('+relativenumber')
+    exe "setl" &l:nu ? "rnu" : &l:rnu ? "nornu" : "nu"
+  else
+    setl nu!
+  endif
+endfunction
