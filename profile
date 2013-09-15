@@ -33,9 +33,10 @@ alias b='bundle exec'
 alias z='zeus'
 alias cdlast='cd $OLDPWD'
 
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-
+if [ "$TERM" != "dumb" ]; then
+  export LS_OPTIONS='--color=auto'
+  eval `dircolors ~/.dir_colors`
+fi
 # Prompt
 export PS1="\n\[\e[0;36m\]\u@\h\[\e[m\] \[\e[0;34m\]\w\[\e[m\]\[\e[0;33m\]\$(__git_ps1)\[\e[m\]\n\$ "
 
