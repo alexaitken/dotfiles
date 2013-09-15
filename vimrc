@@ -18,7 +18,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-haml'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
@@ -31,6 +33,8 @@ Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle 'tpope/vim-bundler'
 Bundle 'rking/ag.vim'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'mklabs/grunt.vim.git'
 
 filetype plugin indent on     " required!
 
