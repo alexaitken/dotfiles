@@ -25,16 +25,23 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'thoughtbot/vim-rspec'
-Bundle 'leebo/vim-slim'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/greplace.vim'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
+Bundle 'jelera/vim-javascript-syntax'
+Bundle "pangloss/vim-javascript"
+Bundle "scrooloose/syntastic.git"
 Bundle 'tpope/vim-bundler'
 Bundle 'rking/ag.vim'
-Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mklabs/grunt.vim.git'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'roman/golden-ratio'
+Bundle "honza/vim-snippets"
+Bundle "alexaitken/js-snippets"
+Bundle 'jgdavey/tslime.vim'
 
 filetype plugin indent on     " required!
 
@@ -119,13 +126,34 @@ imap <c-s> <esc>:w<CR>
 map <c-c> <esc>
 map! <c-c> <esc>
 
-" spec.vim mappings
+" rspec configuration
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
-" bind control-l to hashrocket
-imap <C-l> <Space>=><Space>
+function! RspecCommand()
+  if findfile(".zeus.sock", ".") == ".zeus.sock"
+    return "zeus rspec {spec}"
+  else
+    return "bundle exec rspec {spec}"
+  endif
+endfunction
+
+function! SetRspecCommand()
+  if findfile(".zeus.sock", ".") == ".zeus.sock"
+    let g:rspec_command = "!" . RspecCommand()
+  else
+    let g:rspec_command = "!" . RspecCommand()
+  endif
+endfunction
+call SetRspecCommand()
+
+function! SendRspecToTmux()
+  let g:rspec_command = 'call Send_to_Tmux("' . RspecCommand() . '\n")'
+endfunction
+
+nmap <leader>tmux :call SendRspecToTmux()<CR>
 
 " convert string to symbol
 nmap <leader>k ds"ds'lbi:<esc>E
@@ -136,6 +164,9 @@ nmap <leader>gw :Git add .<CR>:Gcommit -m "WIP"<CR>
 
 " CommandT remaps
 map <Leader>f :CommandT<CR>
+let g:CommandTWildIgnore=&wildignore . ",tmp/*,log/*,coverage/*"
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -181,6 +212,22 @@ nmap <leader>vi :tabedit <C-R>=resolve(expand($MYVIMRC))<cr><cr>
 nmap <leader>bdd :bufdo bd <cr>
 nmap <leader>bee :bufdo e! <cr>
 
+" Use ag over grep
+set grepprg=ag\ --nogroup\ --nocolor
+
+" Use ag in CtrlP for listing files. Lightning fast and respects
+" .gitignore
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+" ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_use_caching = 0
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AutoCommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,6 +238,8 @@ if has("autocmd")
   " Source the vimrc file after saving it
   autocmd bufwritepost .vimrc source $MYVIMRC
   autocmd bufwritepost vimrc source $MYVIMRC
+  autocmd FileType text setlocal textwidth=78
+
 
   " watch for file changes
   autocmd FileChangedShell * echo "File changed :e to reload"
