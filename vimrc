@@ -22,7 +22,7 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'vim-scripts/tComment'
@@ -162,10 +162,10 @@ imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 " Git work in progress
 nmap <leader>gw :Git add .<CR>:Gcommit -m "WIP"<CR>
 
-" CommandT remaps
-map <Leader>f :CommandT<CR>
-let g:CommandTWildIgnore=&wildignore . ",tmp/*,log/*,coverage/*"
 
+" CtrlP remaps
+map <Leader>f :CtrlP<CR>
+let g:ctrlp_custom_ignore=&wildignore . ",tmp/*,log/*,coverage/*"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
