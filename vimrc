@@ -21,7 +21,7 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'kien/ctrlp.vim'
+Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'vim-scripts/tComment'
@@ -165,11 +165,9 @@ imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 " Git work in progress
 nmap <leader>gw :Git add .<CR>:Gcommit -m "WIP"<CR>
 
-
-" CtrlP remaps
-map <Leader>f :CtrlP<CR>
-let g:ctrlp_custom_ignore=&wildignore . ",tmp/*,log/*,coverage/*"
-
+" CommandT remaps
+map <Leader>f :CommandT<CR>
+let g:CommandTWildIgnore=&wildignore . ",tmp/*,log/*,coverage/*"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -223,10 +221,6 @@ nnoremap <F10> :b <C-Z>
 
 " Use ag over grep
 set grepprg=ag\ --nogroup\ --nocolor
-
-" Use ag in CtrlP for listing files. Lightning fast and respects
-" .gitignore
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
