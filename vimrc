@@ -13,7 +13,6 @@ Bundle 'gmarik/vundle'
 
 Bundle 'danro/rename.vim'
 Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-endwise'
@@ -28,7 +27,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/greplace.vim'
 Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
+Bundle 'tomtom/tlib_vim'
 Bundle "garbas/vim-snipmate"
 Bundle 'jelera/vim-javascript-syntax'
 Bundle "pangloss/vim-javascript"
@@ -36,7 +35,6 @@ Bundle "scrooloose/syntastic.git"
 Bundle 'tpope/vim-bundler'
 Bundle 'rking/ag.vim'
 Bundle 'mklabs/grunt.vim.git'
-Bundle 'thoughtbot/vim-rspec'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'roman/golden-ratio'
 Bundle "honza/vim-snippets"
@@ -122,6 +120,8 @@ imap <f1> <esc>
 nmap <c-s> <esc>:w<CR>
 imap <c-s> <esc>:w<CR>
 
+nmap <c-q> <esc>:q<CR>
+
 " ESC to <c-c>
 map <c-c> <esc>
 map! <c-c> <esc>
@@ -155,6 +155,9 @@ endfunction
 
 nmap <leader>tmux :call SendRspecToTmux()<CR>
 
+nmap <leader>ut :call Send_to_Tmux("bundle exec ruby -Itest " . expand('%') .  "\n")<CR>
+nmap <leader>zt :call Send_to_Tmux("zeus test " . expand('%') .  "\n")<CR>
+
 " convert string to symbol
 nmap <leader>k ds"ds'lbi:<esc>E
 imap <leader>k <esc>ds"ds'lbi:<esc>Ea
@@ -185,10 +188,10 @@ inoremap <s-tab> <c-n>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+" map <Left> <Nop>
+" map <Right> <Nop>
+" map <Up> <Nop>
+" map <Down> <Nop>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
@@ -202,15 +205,21 @@ nmap <leader>cat :! cat  '%:p'<cr>
 nmap <leader>pbcopy :! pbcopy <  '%:p'<cr>
 
 " Quick open mappings
-nmap <leader>vn :50vspl $HOME/Dropbox/notes/vim.notes <cr>
+nmap <leader>vn :vspl $HOME/Dropbox/notes/vim.notes <cr>
+nmap <leader>tn :vspl $HOME/Dropbox/notes/tmux.notes <cr>
 nmap <leader>an :vspl $HOME/Dropbox/notes/Alex_Aitken.notes <cr>
-nmap <leader>zn :vspl $HOME/Dropbox/notes/zoocasa.notes <cr>
+nmap <leader>sn :vspl $HOME/Dropbox/notes/shopify.notes <cr>
 nmap <leader>nn :vspl $HOME/Dropbox/notes <cr>
 nmap <leader>vi :tabedit <C-R>=resolve(expand($MYVIMRC))<cr><cr>
 
 " Close all buffers
 nmap <leader>bdd :bufdo bd <cr>
 nmap <leader>bee :bufdo e! <cr>
+
+" tab complete buffer changing.
+set wildchar=<Tab> wildmenu wildmode=full
+set wildcharm=<C-Z>
+nnoremap <F10> :b <C-Z>
 
 " Use ag over grep
 set grepprg=ag\ --nogroup\ --nocolor
@@ -224,7 +233,7 @@ let g:ctrlp_use_caching = 0
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 

@@ -1,5 +1,6 @@
 export TERM="xterm-color"
 export EDITOR=vim
+export PATH=$HOME/bin:$PATH
 
 # History controls
 shopt -s histappend
