@@ -248,6 +248,10 @@ if has("autocmd")
 
   " watch for file changes
   autocmd FileChangedShell * echo "File changed :e to reload"
+
+  " my note files are generally in markdown.
+  au BufNewFile,BufRead *.notes set filetype=markdown
+
 endif
 
 nmap <leader>4 :call ToggleNumberDisplay()<cr>
