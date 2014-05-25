@@ -8,7 +8,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
-
+"
 " Bundles
 
 Bundle 'danro/rename.vim'
@@ -23,6 +23,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'alexaitken/vim-rubytest'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/greplace.vim'
@@ -128,32 +129,52 @@ nmap <c-q> <esc>:q<CR>
 map <c-c> <esc>
 map! <c-c> <esc>
 
-" rspec configuration
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
 function! RspecCommand()
-  if findfile(".zeus.sock", ".") == ".zeus.sock"
-    return "zeus rspec {spec}"
+  if findfile("bin/rspec") == "bin/rspec"
+    return "bin/rspec {spec}"
   else
     return "bundle exec rspec {spec}"
   endif
 endfunction
-
-function! SetRspecCommand()
-  if findfile(".zeus.sock", ".") == ".zeus.sock"
-    let g:rspec_command = "!" . RspecCommand()
-  else
-    let g:rspec_command = "!" . RspecCommand()
-  endif
-endfunction
-call SetRspecCommand()
+let g:rspec_command = '!' . RspecCommand()
 
 function! SendRspecToTmux()
   let g:rspec_command = 'call Send_to_Tmux("' . RspecCommand() . '\n")'
 endfunction
+
+function! SendTestunitToTmux()
+  let g:rubytest_cmd_test = 'call Send_to_Tmux("bin/testunit %p\n")'
+  let g:rubytest_cmd_testcase = 'call Send_to_Tmux("bin/testunit %p -n ''/%c/''\n")'
+endfunction
+
+let g:rubytest_cmd_test = "!bin/testunit %p"
+let g:rubytest_cmd_testcase = "!bin/testunit %p -n '/%c/'"
+
+map <Leader>\ <Plug>RubyTestRun     " change from <Leader>t to <Leader>\
+map <Leader>] <Plug>RubyFileRun     " change from <Leader>T to <Leader>]
+map <Leader>/ <Plug>RubyTestRunLast " change from <Leader>l to <Leader>/
+
+function! TestunitProject()
+  map <Leader>s <Plug>RubyTestRun
+  map <Leader>t <Plug>RubyFileRun
+  map <Leader>l <Plug>RubyTestRunLast
+endfunction
+
+function! RspecProject()
+  map <Leader>t :call RunCurrentSpecFile()<CR>
+  map <Leader>s :call RunNearestSpec()<CR>
+  map <Leader>l :call RunLastSpec()<CR>
+  map <Leader>a :call RunAllSpecs()<CR>
+endfunction
+
+function! FindTestingFramework()
+  if findfile("test/test_helper.rb") == "test/test_helper.rb"
+    call TestunitProject()
+  else
+    call RspecProject()
+  endif
+endfunction
+call FindTestingFramework()
 
 nmap <leader>mr <Plug>SetTmuxVars
 
