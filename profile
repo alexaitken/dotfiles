@@ -47,6 +47,13 @@ vim() {
 }
 source $HOME/.bash_personal
 
+platform=`uname`
+if [[ "$platform" == 'Linux' ]]; then
+  source $HOME/.profile_linux
+elif [[ "$platform" == 'Darwin' ]]; then
+  source $HOME/.profile_mac
+fi
+
 # include .bashrc if it exists
 if [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
