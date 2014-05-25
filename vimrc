@@ -241,6 +241,12 @@ map <Leader>vu :RVunittest<CR>
 map <Leader>vm :RVmodel<cr>
 map <Leader>vv :RVview<cr>
 
+" Move lines
+nnoremap <S-Up> V:move '<-2<CR><Esc>
+nnoremap <S-Down> V:move '>+1<CR><Esc>
+vnoremap <S-Up> :move '<-2<CR>gv
+vnoremap <S-Down> :move '>+1<CR>gv
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AutoCommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
