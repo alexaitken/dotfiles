@@ -12,6 +12,7 @@ alias t='script/test'
 alias tt='bundle exec rake test'
 alias b='bundle exec'
 alias z='zeus'
+alias bs='bundle exec spring'
 
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='--color=auto'
