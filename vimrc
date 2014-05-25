@@ -176,6 +176,14 @@ function! FindTestingFramework()
 endfunction
 call FindTestingFramework()
 
+function! TmuxifyTestCommands()
+  if $TMUX != ''
+    call SendRspecToTmux()
+    call SendTestunitToTmux()
+  endif
+endfunction
+call TmuxifyTestCommands()
+
 nmap <leader>mr <Plug>SetTmuxVars
 
 nmap <leader>ut :call Send_to_Tmux("bundle exec ruby -Itest " . expand('%') .  "\n")<CR>
