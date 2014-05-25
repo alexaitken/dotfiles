@@ -102,6 +102,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+nmap <leader>ww <C-W>_<C-W>\|
+
 " Clear the search buffer when hitting return
 function! MapCR()
   nnoremap <cr> :nohlsearch<cr>
@@ -153,10 +155,10 @@ function! SendRspecToTmux()
   let g:rspec_command = 'call Send_to_Tmux("' . RspecCommand() . '\n")'
 endfunction
 
-nmap <leader>tmux :call SendRspecToTmux()<CR>
+nmap <leader>mr <Plug>SetTmuxVars
 
 nmap <leader>ut :call Send_to_Tmux("bundle exec ruby -Itest " . expand('%') .  "\n")<CR>
-nmap <leader>zt :call Send_to_Tmux("zeus test " . expand('%') .  "\n")<CR>
+nmap <leader>st :call Send_to_Tmux("bundle exec spring testunit " . expand('%') .  "\n")<CR>
 
 " convert string to symbol
 nmap <leader>k ds"ds'lbi:<esc>E
