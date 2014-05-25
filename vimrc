@@ -169,7 +169,7 @@ nmap <leader>gw :Git add .<CR>:Gcommit -m "WIP"<CR>
 
 " CommandT remaps
 map <Leader>f :CommandT<CR>
-let g:CommandTWildIgnore=&wildignore . ",tmp/*,log/*,coverage/*"
+let g:CommandTWildIgnore=&wildignore . ",tmp/*,log/*,coverage/*,generated/*,node_modules/*"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
