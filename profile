@@ -7,6 +7,12 @@ shopt -s histappend
 export HISTIGNORE='&:ls:cd ~:cd ..:[bf]g:exit:h:history'
 export HISTCONTROL=erasedups
 
+# rbenv setup
+if [ -d $HOME/.rbenv/bin ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
 # ALIAS'
 alias t='script/test'
 alias tt='bundle exec rake test'
