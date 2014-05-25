@@ -45,3 +45,5 @@ source $HOME/.bash_personal
 if [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi
+
+PATH=./.bundle/bin:$PATH
