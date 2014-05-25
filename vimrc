@@ -234,6 +234,13 @@ nnoremap \ :Ag<SPACE>
 
 nmap // /<C-R><C-W><CR>
 
+map <Leader>u :Runittest<cr>
+map <Leader>vc :RVcontroller<cr>
+map <Leader>vf :RVfunctional<cr>
+map <Leader>vu :RVunittest<CR>
+map <Leader>vm :RVmodel<cr>
+map <Leader>vv :RVview<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AutoCommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
