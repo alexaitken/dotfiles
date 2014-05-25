@@ -193,6 +193,11 @@ inoremap <s-tab> <c-n>
 " map <Up> <Nop>
 " map <Down> <Nop>
 
+
+" Let's be reasonable, shall we?
+nmap k gk
+nmap j gj
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
