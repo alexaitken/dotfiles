@@ -8,8 +8,8 @@ export HISTIGNORE='&:ls:cd ~:cd ..:[bf]g:exit:h:history'
 export HISTCONTROL=erasedups
 
 # rbenv setup
-if [ -d $HOME/.rbenv/bin ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
+if [ -d $HOME/.rbenv/shims ]; then
+  export PATH="$HOME/.rbenv/shims:$PATH"
   eval "$(rbenv init -)"
 fi
 
