@@ -20,6 +20,14 @@ alias b='bundle exec'
 alias z='zeus'
 alias bs='bundle exec spring'
 
+# platform specific configs.
+platform=`uname`
+if [[ "$platform" == 'Linux' ]]; then
+  source $HOME/.profile_linux
+elif [[ "$platform" == 'Darwin' ]]; then
+  source $HOME/.profile_mac
+fi
+
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='--color=auto'
   eval `dircolors ~/.dir_colors`
@@ -46,13 +54,6 @@ vim() {
     stty "$STTYOPTS"
 }
 source $HOME/.bash_personal
-
-platform=`uname`
-if [[ "$platform" == 'Linux' ]]; then
-  source $HOME/.profile_linux
-elif [[ "$platform" == 'Darwin' ]]; then
-  source $HOME/.profile_mac
-fi
 
 # include .bashrc if it exists
 if [ -f "$HOME/.bashrc" ]; then
