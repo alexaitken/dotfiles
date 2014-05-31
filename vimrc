@@ -281,6 +281,10 @@ nnoremap <S-Down> V:move '>+1<CR><Esc>
 vnoremap <S-Up> :move '<-2<CR>gv
 vnoremap <S-Down> :move '>+1<CR>gv
 
+
+" Ctags
+set tags=.tags,.gemtags
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AutoCommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
