@@ -49,3 +49,13 @@ if ! tmux -V | grep -q "1.9a"; then
   make
   sudo make install
 fi
+
+if ! ag -V | grep -q "0.13.1"; then
+  cd /tmp
+  wget https://github.com/downloads/ggreer/the_silver_searcher/the_silver_searcher-0.13.1.tar.gz
+
+  tar xzf the_silver_searcher-0.13.1.tar.gz
+  cd the_silver_searcher-0.13.1
+  ./build.sh
+  sudo make install
+fi
