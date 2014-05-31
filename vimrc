@@ -61,7 +61,7 @@ set background=dark
 let g:solarized_termtrans=1
 let g:solarized_termcolors = 16
 let g:solarized_contrast = "high"
-colorscheme solarized
+silent!  colorscheme solarized
 
 set cmdheight=2
 set history=10000
