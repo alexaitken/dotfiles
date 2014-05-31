@@ -308,6 +308,8 @@ if has("autocmd")
   " my note files are generally in markdown.
   au BufNewFile,BufRead *.notes set filetype=markdown
 
+  " go to last line
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 nmap <leader>4 :call ToggleNumberDisplay()<cr>
