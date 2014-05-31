@@ -193,6 +193,10 @@ nmap <leader>st :call Send_to_Tmux("bundle exec spring testunit " . expand('%') 
 nmap <leader>k ds"ds'lbi:<esc>E
 imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 
+" convert symbol to string
+nmap <leader><S-K> lbF:xysw'<esc>E
+imap <leader><S-K> <esc>lbF:xysw'<esc>Ea
+
 " Git work in progress
 nmap <leader>gw :Git add .<CR>:Gcommit -m "WIP"<CR>
 
