@@ -27,14 +27,17 @@ fi
 
 vim +BundleInstall +qall
 
-echo "Compiling commandt..."
-(
-  cd $HOME/.vim/bundle/Command-T/ruby/command-t
-  source /usr/local/share/chruby/chruby.sh
-  ruby extconf.rb
-  make clean
-  make
-)
+if [[ ! ~/.vim/bundle/Command-T/ruby/command-t/ext.so ]]
+then
+  echo "Compiling commandt..."
+  (
+    cd $HOME/.vim/bundle/Command-T/ruby/command-t
+    source /usr/local/share/chruby/chruby.sh
+    ruby extconf.rb
+    make clean
+    make
+  )
+fi
 
 if ! tmux -V | grep -q "1.9a"; then
   cd /tmp
