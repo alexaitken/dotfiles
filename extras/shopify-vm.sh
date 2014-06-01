@@ -59,3 +59,8 @@ if ! ag -V | grep -q "0.13.1"; then
   ./build.sh
   sudo make install
 fi
+
+if [[ ! -e ~/.dropbox-dist ]]
+then
+  cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+fi
