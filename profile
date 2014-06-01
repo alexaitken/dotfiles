@@ -14,10 +14,7 @@ if [ -d $HOME/.rbenv/shims ]; then
 fi
 
 # ALIAS'
-alias t='script/test'
-alias tt='bundle exec rake test'
 alias b='bundle exec'
-alias z='zeus'
 alias bs='bundle exec spring'
 
 # platform specific configs.
