@@ -66,4 +66,4 @@ fi
 if ! crontab -l | grep -q 'dropbox-dist/dropboxd'; then
   (crontab -l; echo '@reboot daemon ${HOME}/.dropbox-dist/dropboxd') | crontab
 fi
-sudo apt-get install tig
+sudo apt-get install tig exuberant-ctags
