@@ -63,6 +63,10 @@ fi
 if [[ ! -e ~/.dropbox-dist ]]
 then
   cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+  echo "run $ ~/.dropbox-dist/dropboxd\nand authorize this computer"
 fi
 
+if ! crontab -l | grep -q 'dropbox-dist/dropboxd'; then
+  (crontab -l; echo '@reboot daemon ${HOME}/.dropbox-dist/dropboxd') | crontab
+fi
 sudo apt-get install tig
