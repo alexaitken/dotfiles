@@ -17,6 +17,9 @@ fi
 alias b='bundle exec'
 alias bs='bundle exec spring'
 
+alias ctag-project='ctags -R -f .tags .'
+alias ctag-gems='ctags -R -f .gemtags $(bundle list --paths)'
+
 # platform specific configs.
 platform=`uname`
 if [[ "$platform" == 'Linux' ]]; then
