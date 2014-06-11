@@ -16,7 +16,6 @@ def source_for(object, method_sym)
     method = object.instance_method(method_sym)
   end
   location = method.source_location
-  `vim #{location[0]}:#{location[1]}` if location
   location
 rescue
   nil
