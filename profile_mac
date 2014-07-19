@@ -2,8 +2,8 @@ export PATH=/usr/local/share/npm/bin:/usr/local/opt/coreutils/libexec/gnubin:/us
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 
 CC=gcc
-LDFLAGS=-L/usr/local/opt/libxml2/lib
-CPPFLAGS=-I/usr/local/opt/libxml2/include
+LDFLAGS='-L/usr/local/opt/libxml2/lib -L/usr/local/opt/openssl/lib'
+CPPFLAGS='-I/usr/local/opt/libxml2/include -I/usr/local/opt/openssl/include'
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
