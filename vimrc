@@ -41,6 +41,7 @@ Bundle 'roman/golden-ratio'
 Bundle "honza/vim-snippets"
 Bundle "alexaitken/js-snippets"
 Bundle 'jgdavey/tslime.vim'
+Bundle 'guns/vim-clojure-static'
 
 filetype plugin indent on     " required!
 
