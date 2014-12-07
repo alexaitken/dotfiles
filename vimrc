@@ -194,6 +194,9 @@ nmap <leader>st :call Send_to_Tmux("bundle exec spring testunit " . expand('%') 
 nmap <leader>k ds"ds'lbi:<esc>E
 imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 
+" convert to new hash syntax.
+nmap <leader>h F:xea:<ESC>f=dw
+
 " convert symbol to string
 nmap <leader><S-K> lbF:xysw'<esc>E
 imap <leader><S-K> <esc>lbF:xysw'<esc>Ea
