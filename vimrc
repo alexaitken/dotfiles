@@ -259,6 +259,8 @@ nmap <leader>vi :tabedit <C-R>=resolve(expand($MYVIMRC))<cr><cr>
 " Close all buffers
 nmap <leader>bdd :bufdo bd <cr>
 nmap <leader>bee :bufdo e! <cr>
+" Delete file and buffer
+nmap <leader>bdf :call delete(expand('%'))
 
 " tab complete buffer changing.
 set wildchar=<Tab> wildmenu wildmode=full
