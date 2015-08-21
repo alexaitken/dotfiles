@@ -42,6 +42,7 @@ Bundle "honza/vim-snippets"
 Bundle "alexaitken/js-snippets"
 Bundle 'jgdavey/tslime.vim'
 Bundle 'guns/vim-clojure-static'
+Bundle 'mxw/vim-jsx'
 
 filetype plugin indent on     " required!
 
@@ -296,6 +297,9 @@ vnoremap <S-Down> :move '>+1<CR>gv
 
 " Ctags
 set tags=.tags,.gemtags
+
+" jsx settings
+let g:jsx_ext_required = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AutoCommands
