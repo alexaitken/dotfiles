@@ -20,7 +20,9 @@ alias bs='bundle exec spring'
 alias ctag-project='ctags -R -f .tags .'
 alias ctag-gems='ctags -R -f .gemtags $(bundle list --paths)'
 
-alias github-clone='git clone git@github.com:\!*'
+function github_clone() {
+ git clone git@github.com:$1
+}
 
 # platform specific configs.
 platform=`uname`
