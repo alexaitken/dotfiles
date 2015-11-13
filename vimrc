@@ -296,10 +296,11 @@ vnoremap <S-Down> :move '>+1<CR>gv
 
 
 " Ctags
-set tags=.tags,.gemtags
+set tags=.tags,.gemtags,.moduletags
 
-" jsx settings
+" syntax and linters
 let g:jsx_ext_required = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AutoCommands
