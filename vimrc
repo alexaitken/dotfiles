@@ -149,6 +149,13 @@ function! SendTestunitToTmux()
   let g:rubytest_cmd_testcase = 'call Send_to_Tmux("bin/testunit %p -n ''/%c/''\n")'
 endfunction
 
+function! SendDevTestunitToTmux()
+  if findfile('dev.yml') == "dev.yml"
+    let g:rubytest_cmd_test = 'call Send_to_Tmux("dev test %p\n")'
+    let g:rubytest_cmd_testcase = 'call Send_to_Tmux("dev test %p -n ''/%c/''\n")'
+  endif
+endfunction
+
 let g:rubytest_cmd_test = "!bin/testunit %p"
 let g:rubytest_cmd_testcase = "!bin/testunit %p -n '/%c/'"
 
@@ -182,6 +189,7 @@ function! TmuxifyTestCommands()
   if $TMUX != ''
     call SendRspecToTmux()
     call SendTestunitToTmux()
+    call SendDevTestunitToTmux()
   endif
 endfunction
 call TmuxifyTestCommands()

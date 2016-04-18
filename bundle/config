@@ -1,5 +1,6 @@
 ---
-BUNDLE_PATH: .bundle/gems
-BUNDLE_BIN: .bundle/bin
+BUNDLE_PATH: ".bundle/gems"
+BUNDLE_BIN: ".bundle/bin"
 BUNDLE_DISABLE_SHARED_GEMS: '1'
-BUNDLE_JOBS: 4
+BUNDLE_JOBS: '4'
+BUNDLE_GEM__TEST: minitest

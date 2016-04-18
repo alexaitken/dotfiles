@@ -73,3 +73,5 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 PATH=./.bundle/bin:$PATH
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
