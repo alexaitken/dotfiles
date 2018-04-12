@@ -17,7 +17,7 @@ fi
 alias b='bundle exec'
 alias bs='bundle exec spring'
 
-alias ctag-project='ctags -R -f .tags .'
+alias ctag-project='ctags -R --exclude=.git --exclude=.bundler -f .tags .'
 alias ctag-gems='ctags -R -f .gemtags $(bundle list --paths)'
 
 function github_clone() {
@@ -45,8 +45,13 @@ function binstubs_on {
     export PATH=./bin:$PATH
 }
 
+function update_ctags {
+  update_ctags_project
+  update_gem_ctags
+}
+
 function update_ctags_project {
-  ctags -R -f .tags .
+  ctags -R -f .tags *
 }
 
 function update_gem_ctags {

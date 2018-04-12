@@ -25,7 +25,7 @@
     igrep    = grep --no-index
     commit-amend = commit --amend -C HEAD
     ca       = !sh -c 'git commit-amend $@' -
-    pullr    = pull --rebase
+    ri       = !sh -c 'git rebase -i HEAD~$@' -
 [color]
 	ui = auto
 [branch]
@@ -36,3 +36,5 @@
 	rebase = true
 [remote "origin"]
 	prune = true
+[gui]
+	recentrepo = /Users/alexaitken/projects/kit

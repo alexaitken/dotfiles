@@ -3,3 +3,5 @@
 .bundle
 .tags
 .gemtags
+dump.rdb
+exit

@@ -19,7 +19,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-abolish'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
@@ -43,6 +43,7 @@ Bundle "alexaitken/js-snippets"
 Bundle 'jgdavey/tslime.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'mxw/vim-jsx'
+Bundle 'ngmy/vim-rubocop'
 
 filetype plugin indent on     " required!
 
@@ -144,6 +145,12 @@ function! SendRspecToTmux()
   let g:rspec_command = 'call Send_to_Tmux("' . RspecCommand() . '\n")'
 endfunction
 
+function! SendDevRspecToTmux()
+  if findfile('dev.yml') == "dev.yml"
+    let g:rspec_command = 'call Send_to_Tmux("dev spec {spec}\n")'
+  endif
+endfunction
+
 function! SendTestunitToTmux()
   let g:rubytest_cmd_test = 'call Send_to_Tmux("bin/testunit %p\n")'
   let g:rubytest_cmd_testcase = 'call Send_to_Tmux("bin/testunit %p -n ''/%c/''\n")'
@@ -188,6 +195,7 @@ call FindTestingFramework()
 function! TmuxifyTestCommands()
   if $TMUX != ''
     call SendRspecToTmux()
+    call SendDevRspecToTmux()
     call SendTestunitToTmux()
     call SendDevTestunitToTmux()
   endif
@@ -203,6 +211,9 @@ nmap <leader>st :call Send_to_Tmux("bundle exec spring testunit " . expand('%') 
 nmap <leader>k ds"ds'lbi:<esc>E
 imap <leader>k <esc>ds"ds'lbi:<esc>Ea
 
+nmap <leader>d cs"'<esc>E
+imap <leader>d <esc>cs"'<esc>Ea
+
 " convert to new hash syntax.
 nmap <leader>h F:xea:<ESC>f=dw
 
@@ -215,7 +226,7 @@ nmap <leader>gw :Git add .<CR>:Gcommit -m "WIP"<CR>
 
 " CommandT remaps
 map <Leader>f :CommandT<CR>
-let g:CommandTWildIgnore=&wildignore . ",tmp/*,log/*,coverage/*,generated/*,node_modules/*"
+let g:CommandTWildIgnore=&wildignore . ",*/tmp/*,*/log/*,*/coverage/*,*/generated/*,*/node_modules/*"
 let g:CommandTMaxFiles=50000
 let g:CommandTIgnoreCase=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -236,10 +247,10 @@ inoremap <s-tab> <c-n>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <Left> <Nop>
-" map <Right> <Nop>
-" map <Up> <Nop>
-" map <Down> <Nop>
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
 
 
 " Let's be reasonable, shall we?
@@ -262,6 +273,7 @@ nmap <leader>vn :vspl $HOME/Dropbox/notes/vim.notes <cr>
 nmap <leader>tn :vspl $HOME/Dropbox/notes/tmux.notes <cr>
 nmap <leader>an :vspl $HOME/Dropbox/notes/Alex_Aitken.notes <cr>
 nmap <leader>sn :vspl $HOME/Dropbox/notes/shopify.notes <cr>
+nmap <leader>kn :vspl $HOME/Dropbox/notes/kit.notes <cr>
 nmap <leader>nn :vspl $HOME/Dropbox/notes <cr>
 nmap <leader>vi :tabedit <C-R>=resolve(expand($MYVIMRC))<cr><cr>
 
@@ -290,18 +302,17 @@ nnoremap \ :Ag<SPACE>
 nmap // /<C-R><C-W><CR>
 
 map <Leader>u :Runittest<cr>
-map <Leader>vc :RVcontroller<cr>
-map <Leader>vf :RVfunctional<cr>
-map <Leader>vu :RVunittest<CR>
-map <Leader>vm :RVmodel<cr>
-map <Leader>vv :RVview<cr>
+map <Leader>vc :Vcontroller<cr>
+map <Leader>vf :Vfunctional<cr>
+map <Leader>vu :Vunittest<CR>
+map <Leader>vm :Vmodel<cr>
+map <Leader>vv :Vview<cr>
 
 " Move lines
 nnoremap <S-Up> V:move '<-2<CR><Esc>
 nnoremap <S-Down> V:move '>+1<CR><Esc>
 vnoremap <S-Up> :move '<-2<CR>gv
 vnoremap <S-Down> :move '>+1<CR>gv
-
 
 " Ctags
 set tags=.tags,.gemtags,.moduletags
